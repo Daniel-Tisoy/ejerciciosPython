@@ -1,17 +1,17 @@
 # entrada
 nota = int(input('Nota númerica'))
 
-if nota > 100 or nota < 0:
+if (nota > 100) or (nota < 0):
     print('nota por fuera del rango (0-100)')
 # proceso
 else:
     if nota >= 90:
         print('Su nota es A')
-    elif 80 <= nota < 90:
+    elif 80 <= nota:
         print('Su nota es B')
-    elif 70 <= nota < 80:
+    elif 70 <= nota:
         print('Su nota es C')
-    elif 60 <= nota < 70:
+    elif 60 <= nota:
         print('Su nota es D')
     else:
         print('Su nota es F')
@@ -30,4 +30,4 @@ else:
                 nota = 'D'
             else:
                 nota = 'F'
-print(f'su nota en letra es {nota}')
+print(f'\n su nota en letra es {nota}')
