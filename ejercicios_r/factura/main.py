@@ -78,27 +78,31 @@ class Factura:
         return total
 
     def imprimir_factura(self):
-        formato = '-'*90  # es el ancho de la tabla
-        print(formato)
-        print('                 F A C T U R A')
+        formato = '-'*85  # es el ancho de la tabla
+        print('\n'+formato)
+        print('                           F A C T U R A')
         print(formato)
         # este formato rellena un con espacios si el string es de menor espacio
-        print('|{:<8}|{:<15}|{:<10}|{:<15}|{:<15}|{:<15}|'.format(
+        print('|{:<8}|{:<10}|{:<10}|{:<15}|{:<15}|{:<20}|'.format(
             'Codigo', 'Cantidad', 'Producto', 'Precio unitario', 'Iva', 'Precio iva incluido'))
+        iva = 0
         for producto in self.lista_productos:
-            print('|{:<8}|{:<15}|{:<10}|{:<15}|{:<15}|{:<20}|'.format(
+
+            print('|{:<8}|{:<10}|{:<10}|{:<15}|{:<7}({}%)   |{:<20}|'.format(
                 producto.get_codigo(),
                 producto.get_cantidad(),
                 producto.get_nombre(),
                 producto.get_precio(),
                 producto.valor_iva(),
+                producto.get_iva(),
                 producto.precio_con_iva()))
         print(formato)
-        print('|{:<35}|{:<15}|{:<15}|{:<20}|'.format(
+        print('|{:<30}|{:<15}|{:<15}|{:<20}|'.format(
             'subtotal ', self.precio_subtotal(), self.valor_iva(), self.precio_total()))
         print(formato)
-        print('|{:<67}|{:<20}|'.format(
+        print('|{:<62}|{:<20}|'.format(
             'total  total a pagar', self.precio_total()))
+        print(formato+'\n')
 
 
 def run():
@@ -106,9 +110,26 @@ def run():
     # generar una lista de productos
     # generar un formato factura
     # imprimir factura
-    i = int(input('Cuantos productos ingresarás: '))
+    # i = int(input('Cuantos productos ingresarás: '))
     lista_productos = list()
-    # solicitar datos
+    # crear los productos
+    producto1 = Producto(1010, 'camiseta', 0, 16, 10)
+
+    producto2 = Producto(1020, 'pantalones', 0, 19, 10)
+    # los precios en los productos no estan con iva
+    # el objeto lo calcula internamente
+    producto1.precio_sin_iva(116000)
+    producto2.precio_sin_iva(119000)
+
+    lista_productos.append(producto1)
+    lista_productos.append(producto2)
+
+    # se crea un objeto factura
+    factura = Factura(lista_productos)
+    # el objeto hace los calculos y formatos
+    factura.imprimir_factura()
+
+    """
     while i > 0:
         print('\n-------------------------------------------------\n')
         cod_producto = input('Ingrese el código del producto: ')
@@ -130,10 +151,7 @@ def run():
         # agregar el producto a la lista de compra
         lista_productos.append(producto)
         i -= 1
-    # se crea un objeto factura
-    factura = Factura(lista_productos)
-    # el objeto hace los calculos y formatos
-    factura.imprimir_factura()
+        """
 
 
 if __name__ == '__main__':
