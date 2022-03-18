@@ -3,9 +3,9 @@ import random
 def lanzar_dados():
     """ simulará la accion de lanzar dados,
     devolviendo una tupla con dos valores enteros"""
-    num_aleatorio1 = random.randint(1, 6)
-    num_aleatorio2 = random.randint(1,6)
-    return (num_aleatorio1, num_aleatorio2)
+    lista_numeros = [1,2,3,4,5,6]
+    lanzar = random.choices(lista_numeros, k=2)
+    return lanzar
 
 if __name__ == "__main__":
 
@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     jugando = True
 
-    while jugando:
+    while jugando == True:
 
         # elegir dos números al aleatorios entre 1 y 6
         lanza_dados = lanzar_dados()
@@ -29,6 +29,6 @@ if __name__ == "__main__":
         # preguntar al usuario si quiere tirar otra vez
         nuevo_intento = input("¿Desea lanzar de nuevo?[y/n]: ")
         if nuevo_intento.lower() != "y":
-            #lower para convertir en minuscula
+            #lower para convertir en minuscula el input
             print("Juego finalizado")
             jugando = False
