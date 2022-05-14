@@ -20,9 +20,9 @@ def costoTotal(numeroPaquetes, descuento):
 
     for i in range(1, numeroPaquetes+1):
         # crear tres variables [alto-ancho-profundo]
-        alto = float(input("inserte valor:"))
-        ancho = float(input("inserte valor:"))
-        profundo = float(input("inserte valor:"))
+        alto = float(input())
+        ancho = float(input())
+        profundo = float(input())
 
         costoEnvio = calcularCosto(alto, ancho, profundo)
 
@@ -33,5 +33,3 @@ def costoTotal(numeroPaquetes, descuento):
 
     return costoTotalEnvio
 
-print(calcularCosto(35,10,5))
-print(costoTotal(2, 50))
