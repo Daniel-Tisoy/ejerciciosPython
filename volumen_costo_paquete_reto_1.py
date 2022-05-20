@@ -14,16 +14,14 @@ def calcularCosto(alto, ancho, profundo):
 
     return costoEnvio
 
-def costoTotal(numeroPaquetes, descuento):
+def costoTotal(listaPaquetes, descuento):
+    # la funcion recibe una lista de diccionarios
 
     costoTotalEnvio = 0
 
-    for i in range(1, numeroPaquetes+1):
-        # crear tres variables [alto-ancho-profundo]
-        alto = float(input())
-        ancho = float(input())
-        profundo = float(input())
-
+    for paquete in listaPaquetes:
+        # extraer los datos de la lista
+        alto, ancho, profundo = paquete["ALTO"], paquete["ANCHO"], paquete["PROFUNDO"]
         costoEnvio = calcularCosto(alto, ancho, profundo)
 
         costoTotalEnvio += costoEnvio
